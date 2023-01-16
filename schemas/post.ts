@@ -6,19 +6,55 @@ export default {
         {
             name: 'title',
             type: 'string',
-            title: 'Title'
+            title: 'Title',
+            validation: (Rule: any) => Rule.required()
+        },
+        {
+            title: 'Slug',
+            name: 'slug',
+            type: 'slug',
+            options: {
+                //Change to schema title to automatically populate
+                source: "title",
+                slugify: (input: any) =>
+                    input
+                        .toLowerCase()
+                        //Remove spaces
+                        .replace(/\s+/g, "-")
+                        //Remove special characters
+                        .replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, ""),
+                validation: (Rule: any) => Rule.required(),
+            }
+        },
+        {
+            name: 'author',
+            type: 'string',
+            title: 'Author (e.g, CypherQueenz, Bgirl X)',
+            validation: (Rule: any) => Rule.required()
         },
         {
             name: 'galleryImages',
             type: 'reference',
-            title: 'Header Picture',
-            to: [{ type: 'galleryImages' }]
+            title: 'Header Picture (square photos work best)',
+            to: [{ type: 'galleryImages' }],
+            validation: (Rule: any) => Rule.required()
         },
         {
             title: 'Content',
             name: 'content',
             type: 'array',
-            of: [{ type: 'block' }]
+            of: [
+                { type: 'block' },
+                {
+                    type: 'image'
+                }],
+            validation: (Rule: any) => Rule.required()
+        },
+        {
+            title: 'Excerpt for Blog Post Preview',
+            name: 'excerpt',
+            type: 'string',
+            validation: (Rule: any) => Rule.required().max(200)
         },
         {
             name: 'visibleBoolean',

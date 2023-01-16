@@ -1,7 +1,7 @@
 export default {
-    name: 'galleryImages',
+    name: 'blogAndEventImages',
     type: 'document',
-    title: 'Gallery Images',
+    title: 'Blog and Event Images',
     fields: [
         {
             name: 'imageFile',
@@ -25,11 +25,6 @@ export default {
             type: 'string',
             title: 'Alt Title for Accessibility (learn more here: shorturl.at/dhR04)',
             validation: (Rule: any) => Rule.required()
-        },
-        {
-            name: 'galleryBoolean',
-            type: 'boolean',
-            title: 'Publish to Gallery'
         }
     ]
 }
