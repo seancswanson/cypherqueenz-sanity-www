@@ -23,8 +23,8 @@ export default {
             .replace(/\s+/g, '-')
             //Remove special characters
             .replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, ''),
-        validation: (Rule: any) => Rule.required(),
       },
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'dateStart',
